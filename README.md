@@ -1,24 +1,29 @@
-# README
+# TV YOU
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+An app where you can save your favorite TV shows!
 
-* Ruby version
+#### Technologies:
 
-* System dependencies
+-- Ruby on Rails
 
-* Configuration
+#### Check out our _[User Stories](#)_.
 
-* Database creation
+### Want to run the app on your local machine?
 
-* Database initialization
+1. Fork this repository.
 
-* How to run the test suite
+2. Clone it down to your local machine.
 
-* Services (job queues, cache servers, search engines, etc.)
+3. run:
 
-* Deployment instructions
+```
+`bundle install`
 
-* ...
+`rails db:migrate && rails db:seed`
+
+`rails s`
+```
+
+---
