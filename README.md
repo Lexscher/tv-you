@@ -8,6 +8,8 @@ An app where you can save your favorite TV shows!
 
 -- Ruby on Rails
 
+-- The Movie DB(_[TMDb](https://www.themoviedb.org/)_)
+
 #### Check out our _[User Stories](https://github.com/Lexscher/tv-you/blob/master/userstories.md)_.
 
 ### Want to run the app on your local machine?
