@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
     def create
         @favorite = Favorite.create(favorite_params)
         if @favorite.valid?
-            redirect_to favorite_path
+            redirect_to favorites_path @favorite
         else
             flash[:errors] = @favorite.errors.full_messages
             redirect_to new_favorite_path
@@ -23,7 +23,8 @@ class FavoritesController < ApplicationController
     end
 
     def destroy
-
+        @favorite.destroy
+        redirect_to favorites_path
     end
 
     private
@@ -33,6 +34,6 @@ class FavoritesController < ApplicationController
     end
 
     def favorite_params
-        params.require(:favorite).permit(:name, :overview)
+        params.require(:favorite).permit(:user_id, :tvshow_id)
     end
 end
