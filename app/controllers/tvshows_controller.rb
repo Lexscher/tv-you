@@ -1,0 +1,2 @@
+class TvshowsController < ApplicationController
+end
