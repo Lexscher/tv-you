@@ -1,0 +1,7 @@
+<h1> All Users ( FOR DEV USE ONLY!!!!) </h1>
+
+<%= link_to "Create User", new_user_path %>
+
+<% @users.each do |user| %>
+  <p> <%= link_to user.name, user %> </p>
+<% end %>
