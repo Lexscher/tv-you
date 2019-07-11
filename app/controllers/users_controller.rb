@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorized, only: [ :show ]
 
   def index
     all_users
@@ -9,9 +10,14 @@ class UsersController < ApplicationController
   end 
 
   def create
+
     @user = User.create(user_params)
 
-    redirect_to @user
+    if @user.valid?
+      redirect_to @user
+    else
+      redirect_to new_user_path
+    end
 
   end 
 
@@ -41,11 +47,15 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end 
 
+  # def current_user
+  #   @current_user = User.find(session[:user_id])
+  # end
+
   def user_params
-    params.require(:user).permit(:name, :username)
+    params.require(:user).permit(:name, :username, :password)
   end 
 
   def all_users

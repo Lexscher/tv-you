@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-jack = User.create(name: "Jack Bean", username: "jack101")
-jess = User.create(name: "Jessica Bean", username: "jess101")
-mike = User.create(name: "Mike Wazowski", username: "mike101")
+jack = User.create(name: "Jack Bean", username: "jack101", password: "abc123")
+jess = User.create(name: "Jessica Bean", username: "jess101", password: "123456")
+mike = User.create(name: "Mike Wazowski", username: "mike101", password: "password123")
 
 fake_show1 = Tvshow.create(name: "clickbait", overview: "YOU'VE NEVER SEEN THIS BEFORE!!")
 fake_show2 = Tvshow.create(name: "The Vlogs", overview: "each episode is 4 minutes and 20 seconds long.")
