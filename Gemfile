@@ -61,5 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# add figaro to gemfile to hide API key.
+# custom gem installs
+  # gems to handle API key.
 gem 'figaro'
+gem 'dotenv-rails'

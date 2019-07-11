@@ -27,4 +27,5 @@
 /config/master.key
 
 # Ignore API keys
-/config/application.yml
+/config/secrets.yml
+.env
