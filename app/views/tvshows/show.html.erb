@@ -1,3 +1,15 @@
-<h1> <%= @tvshow.name %> </h1>
-
-<p> <%= @tvshow.overview %> </p>
+<button><%= link_to "↞ TV Shows", tvshows_path %></button>
+​
+<h1><%= @tvshow.name %></h1>
+​
+<img
+  src="https://image.tmdb.org/t/p/w500<%= @tvshow.backdrop_path %>"
+  alt="<%= @tvshow.name %> backdrop"
+/>
+​
+<p><%= @tvshow.overview %></p>
+​
+<p>First Aired: <%= @tvshow.first_air_date %></p>
+<% if @tvshow.original_name != @tvshow.name %>
+<p>Original Name: <%= @tvshow.original_name %></p>
+<% end %> ​
