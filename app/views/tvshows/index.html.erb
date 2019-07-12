@@ -1,5 +1,19 @@
 <h1>Look at all these TV Shows!</h1>
 
+<%#= form_tag "/tvshows", method: :get do %>
+
+  <%#= text_field_tag :search, params[:search] %>
+  <%#= submit_tag "Search for a TV Show" %>
+  
+<%# end %>
+
+<%= form_tag "/tvshows", method: :get do %>
+
+  <%= text_field_tag :search_term %>
+  <%= submit_tag "Search for a TV Show!" %>
+  
+<% end %>
+
 <div class="movies_index">
   <% @tvshows.each do |tvshow| %>
   <div>

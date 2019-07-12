@@ -3,7 +3,15 @@ class TvshowsController < ApplicationController
     
 
     def index
-        @tvshows = Tvshow.all
+        if params[:search_term]
+            #@tvshows = Tvshow.where(name: params[:search_term])
+            @tvshows = Tvshow.where("name like ?", "%#{params[:search_term]}%")
+        else
+            @tvshows = Tvshow.all
+        end
+        
+        #@tvshows = Tvshow.search(params[:search])
+
     end
 
     def show
@@ -32,6 +40,26 @@ class TvshowsController < ApplicationController
         else
             current_user
         end 
-    end 
+    end
+
+    # def tvshow_params
+    #     params.require(:tvshow).permit(
+    #     :name, 
+    #     :overview,  
+    #     :original_name, 
+    #     :popularity,  
+    #     :first_air_date, 
+    #     :backdrop_path, 
+    #     :poster_path
+    #     )
+    # end 
+    
+    # name:, 
+    # overview:,  
+    # original_name:, 
+    # popularity:,  
+    # first_air_date:, 
+    # backdrop_path:, 
+    # poster_path:
 
 end
