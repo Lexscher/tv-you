@@ -10,8 +10,13 @@
           src="https://image.tmdb.org/t/p/w500<%= tvshow.poster_path %>"
           alt="tvshow.name"
         />
-      </div>
-    </a>
+        </div>
+        </a>
+        <% if @user.tvshows.include?(tvshow) %>
+  <%= button_to 'Remove from Favorites!', favorite_path(tvshow.find_favorite(@user)), method: :delete %>
+<% else %>
+  <%= button_to "Add to FAVORITES!!!", "/favorites/#{tvshow.id}" %>
+<% end %>
   </div>
   <% end %>
 </div>

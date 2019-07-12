@@ -6,34 +6,61 @@ class FavoritesController < ApplicationController
     end
     
     def show
+        current_tvshow
     end
 
     def new
         @favorite = Favorite.new
+        current_tvshow
+        current_user
     end
 
     def create
-        @favorite = Favorite.create(favorite_params)
+        #byebug
+        current_user
+        @favorite = Favorite.create(user_id: @user.id, tvshow_id: params[:id])
         if @favorite.valid?
-            redirect_to favorites_path @favorite
+            redirect_to user_path @favorite.user
         else
             flash[:errors] = @favorite.errors.full_messages
-            redirect_to new_favorite_path
+            redirect_to tvshows_path
         end
     end
 
     def destroy
         @favorite.destroy
-        redirect_to favorites_path
+        redirect_to tvshows_path
     end
 
     private
 
+    def search_and_destroy_favorite
+
+    end 
+
     def find_favorite
-        @favorite = Favorite.find(params[:id])
+        current_user
+        @favorite = Favorite.find_by(user_id: @user.id)
     end
 
     def favorite_params
+        #byebug
         params.require(:favorite).permit(:user_id, :tvshow_id)
     end
+
+    def favorite_button
+        current_user
+        current_tvshow
+        #byebug
+    end 
+
+    def current_user
+        @user = User.find(session[:user_id])
+    end 
+
+    def current_tvshow
+        #byebug
+        #@tvshow = Tvshow.find(params[:id]
+    end 
+
 end
