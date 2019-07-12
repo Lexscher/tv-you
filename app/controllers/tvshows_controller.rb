@@ -1,5 +1,5 @@
 class TvshowsController < ApplicationController
-    before_action :find_tvshow, only: [:show]
+    before_action :check_user, only: [:index, :show]
     
 
     def index
@@ -7,6 +7,7 @@ class TvshowsController < ApplicationController
     end
 
     def show
+        find_tvshow
     end
 
     private
@@ -14,5 +15,23 @@ class TvshowsController < ApplicationController
     def find_tvshow
         @tvshow = Tvshow.find(params[:id])
     end
+
+    # def current_user
+    #     @user = User.find(session[:user_id])
+    # end 
+    
+    def current_user
+        # if !!session[:user_id]
+            @user = User.find(session[:user_id])
+        # end
+    end 
+
+    def check_user
+        if !current_user
+            redirect_to login_path
+        else
+            current_user
+        end 
+    end 
 
 end

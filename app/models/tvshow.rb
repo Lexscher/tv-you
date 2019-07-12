@@ -13,6 +13,10 @@ class Tvshow < ApplicationRecord
         response = Net::HTTP.get_response(uri)
         JSON.parse(response.body)
     end
+
+    def find_favorite(user)
+       user.favorites.find_by(tvshow_id: self.id)
+    end
     
     # page1 = Tvshow.get_popular_shows(1)
     # page1["results"].count => 20

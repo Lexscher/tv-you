@@ -9,4 +9,8 @@ class Favorite < ApplicationRecord
     message: "You can't favorite the same thing, twice!!" 
   }
   
+  def self.this_tvshow
+    @this_tvshow = Tvshow.find(params[:id])
+  end 
+
 end

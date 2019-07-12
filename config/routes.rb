@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :favorites
+  resources :favorites, only: [ :index, :show, :destroy ]
   resources :tvshows
   resources :users
   resources :auth
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   delete "/auth", to: "auth#destroy"
   # Loggin Out
+  
+  post 'favorites/:id', to: "favorites#create"
 
   root 'auth#new'
 
