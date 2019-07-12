@@ -1,22 +1,27 @@
-<button><%= link_to "↞ TV Shows", tvshows_path %></button>
-​
-<h1><%= @tvshow.name %></h1>
-​
-<img
-  src="https://image.tmdb.org/t/p/w500<%= @tvshow.backdrop_path %>"
-  alt="<%= @tvshow.name %> backdrop"
-/>
-​
+<div class="tvshow-container">
+  <button class="btn">
+    <%= link_to "↞ TV Shows", tvshows_path %>
+  </button>
+  
+  <h1><%= @tvshow.name %></h1>
+  
+  <img
+    class="show-backdrop"
+    src="https://image.tmdb.org/t/p/w500<%= @tvshow.backdrop_path %>"
+    alt="<%= @tvshow.name %> backdrop"
+  />
+  
+  <p><%= @tvshow.overview %></p>
+  
+  <p>First Aired: <%= @tvshow.first_air_date %></p>
+  <% if @tvshow.original_name != @tvshow.name %>
+  <p>Original Name: <%= @tvshow.original_name %></p>
+  <% end %> 
+  
+  <% if @user.tvshows.include?(@tvshow) %>
+    <%= button_to 'Remove from Favorites!', favorite_path(@tvshow.find_favorite(@user)), method: :delete %>
+  <% else %>
+    <%= button_to "Add to FAVORITES!!!", "/favorites/#{@tvshow.id}" %>
+  <% end %>
+</div>
 
-<p><%= @tvshow.overview %></p>
-​
-<p>First Aired: <%= @tvshow.first_air_date %></p>
-<% if @tvshow.original_name != @tvshow.name %>
-<p>Original Name: <%= @tvshow.original_name %></p>
-<% end %> ​
-
-<% if @user.tvshows.include?(@tvshow) %>
-  <%= button_to 'Remove from Favorites!', favorite_path(@tvshow.find_favorite(@user)), method: :delete %>
-<% else %>
-  <%= button_to "Add to FAVORITES!!!", "/favorites/#{@tvshow.id}" %>
-<% end %>

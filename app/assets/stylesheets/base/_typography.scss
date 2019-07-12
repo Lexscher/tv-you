@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: $default-font-weight;
+  font-size: $default-font-size;
+  background: $color-primary-light;
+  color: $color-secondary-dark;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+}
+
+.divider {
+  margin-bottom: 5rem;
+}
+
+.nav-h1 {
+  font-size: 70px;
+  padding: 5px;
+  color: $color-secondary-light;
+  text-shadow: 3px 3px $color-primary-dark;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: $default-font-header;
+  }
+}
+
+p {
+  font-family: $default-font-family;
+}
+
+form,
+.one-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.index-tvshow-name {
+  margin-top: 0;
+}

@@ -4,12 +4,28 @@
     <title>TvYou</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <% if session[:user_id] %>
+    <nav>
+      <div class="nav-group-1">
+        <button class="btn"> <%= link_to 'Home', "/tvshows" %></button>
+        <button class="btn"><%= link_to 'Profile', "/users/1" %></button>
+      </div>
+      <div class="nav-group-2">
+        <button class="btn"><%= link_to 'Log out', "/auth", method: :delete %></button>
+      </div>
+    </nav>
+  <% else %>
+  <nav>
+    <h1 class="nav-h1">TV-You</h1>
+  </nav>
+  <% end %>
+  <div class="divider"></div>
     <%= yield %>
   </body>
 </html>
