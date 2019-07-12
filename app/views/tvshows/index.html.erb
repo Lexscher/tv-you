@@ -1,17 +1,17 @@
-<h1>Look at all these TV Shows!</h1>
-
-<div class="movies_index">
-  <% @tvshows.each do |tvshow| %>
-  <div>
-    <a href="<%= tvshow_path(tvshow) %>">
-      <div>
-        <h4><%= tvshow.name %></h4>
+<div class="tvshows-page">
+  <h1>Look at all these TV Shows!</h1>
+  <div class="tvshows_list">
+    <% @tvshows.each do |tvshow| %>
+    <div class="index-tvshow u-center-text u-margin-bottom-small">
+      <a href="<%= tvshow_path(tvshow) %>">
         <img
+          class="poster"
           src="https://image.tmdb.org/t/p/w500<%= tvshow.poster_path %>"
           alt="tvshow.name"
         />
-      </div>
-    </a>
+        <h6 class="index-tvshow-name"><%= tvshow.name %></h6>
+      </a>
+    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>

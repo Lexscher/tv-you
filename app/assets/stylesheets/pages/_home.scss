@@ -1,0 +1,25 @@
+.tvshows_list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.index-tvshow {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px 10px;
+  perspective: 40px;
+}
+
+.poster {
+  width: 400px;
+  cursor: pointer;
+  transition: all 1.2s ease;
+  -webkit-transition: all 0.5s ease;
+  box-shadow: 4px 4px 8px $color-black;
+  border: 2px solid $color-secondary-light;
+  &:hover {
+    width: 410px;
+    box-shadow: 15px 15px 20px $color-primary-dark;
+  }
+}
