@@ -1,12 +1,12 @@
 <div class="tvshows-page">
   <div class="index-header">
     <h1>Look at all these TV Shows!</h1>
-    <%= form_tag "/tvshows", method: :get do %>
-
-      <%= text_field_tag :search_term %>
-      <%= submit_tag "Search for a TV Show!" %>
-
-    <% end %>
+    <div class="index-search"
+        <%= form_tag "/tvshows", method: :get do %>
+        <%= text_field_tag :search_term %>
+        <%= submit_tag "Search" %>
+        <% end %>
+    </div>
     <div class="btn-container ">
       <% if @page.to_i == 1 %>
       <button class="btn btn__pages">
