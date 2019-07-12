@@ -1,31 +1,52 @@
 <div class="tvshows-page">
-  
-  <h1>Look at all these TV Shows!</h1>
-  <div class="tvshows_list">
-    
-    <% @tvshows.each do |tvshow| %>
-    
-      <div class="index-tvshow u-center-text u-margin-bottom-small">
-        
-        <a href="<%= tvshow_path(tvshow) %>">
-          <img
-            class="poster"
-            src="https://image.tmdb.org/t/p/w500<%= tvshow.poster_path %>"
-            alt="tvshow.name"
-          />
-           <h6 class="index-tvshow-name"><%= tvshow.name %></h6>
-         </a> <!-- LINK -->
-    
-      <% if @user.tvshows.include?(tvshow) %>
-        <%= button_to 'Remove from Favorites!', favorite_path(tvshow.find_favorite(@user)), method: :delete %>
+  <div class="index-header">
+    <h1>Look at all these TV Shows!</h1>
+    <div class="btn-container ">
+      <% if @page.to_i == 1 %>
+      <button class="btn btn__pages">
+        <%= link_to "Next ≫", "/tvshows?page=#{@page.to_i + 1}" %>
+      </button>
       <% else %>
-        <%= button_to "Add to FAVORITES!!!", "/favorites/#{tvshow.id}" %>
-      <% end %> <!-- CONDITIONAL -->
-    
-      </div> <!-- index-tvshow -->
+      <button class="btn btn__pages">
+        <%= link_to "≪ Prev", "/tvshows?page=#{@page.to_i - 1}" %>
+      </button>
+      <button class="btn btn__pages">
+        <%= link_to "Next ≫", "/tvshows?page=#{@page.to_i + 1}" %>
+      </button>
+      <% end %>
+    </div>
+  </div>
+  <div class="tvshows_list">
+    <% @tvshows.each do |tvshow| %>
+    <div class="index-tvshow u-center-text u-margin-bottom-small">
+      <a href="<%= tvshow_path(tvshow) %>">
+        <img
+          class="poster"
+          src="https://image.tmdb.org/t/p/w500<%= tvshow.poster_path %>"
+          alt="tvshow.name"
+        />
+        <h6 class="index-tvshow-name"><%= tvshow.name %></h6>
+      </a>
+      <!-- LINK -->
 
-    <% end %> <!-- @tvshows.each -->
-    
-  </div> <!-- .tvshows_list -->
-  
-</div> <!-- .tvshows-page -->
+      <% if @user.tvshows.include?(tvshow) %>
+      <button class="btn btn--red">
+        <%= link_to 'Remove from Favorites!',
+        favorite_path(tvshow.find_favorite(@user)), method: :delete %>
+      </button>
+      <% else %>
+      <button class="btn btn--green">
+        <%= link_to "Add to FAVORITES!!!", "/favorites/#{tvshow.id}", method:
+        :post %>
+      </button>
+      <% end %>
+      <!-- CONDITIONAL -->
+    </div>
+    <!-- index-tvshow -->
+
+    <% end %>
+    <!-- @tvshows.each -->
+  </div>
+  <!-- .tvshows_list -->
+</div>
+<!-- .tvshows-page -->

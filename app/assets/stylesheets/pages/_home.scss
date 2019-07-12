@@ -1,3 +1,10 @@
+.index-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 .tvshows_list {
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +14,7 @@
 .index-tvshow {
   display: flex;
   flex-direction: column;
-  margin: 0 25px 10px;
+  margin: 0 25px 30px;
   perspective: 40px;
 }
 

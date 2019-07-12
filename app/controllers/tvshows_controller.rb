@@ -3,7 +3,14 @@ class TvshowsController < ApplicationController
     
 
     def index
-        @tvshows = Tvshow.all
+        @page = params[:page]
+        if @page
+            @max = @page.to_i * 21
+            @min = @max - 21
+            @tvshows = Tvshow.where("id >= #{@min} and id <= #{@max}")
+        else
+            @tvshows = Tvshow.where("id <= 21")
+        end
     end
 
     def show

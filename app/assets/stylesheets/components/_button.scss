@@ -12,6 +12,14 @@
     user-select: none;
   }
 
+  &--green {
+    background: green;
+  }
+
+  &--red {
+    background: red;
+  }
+
   &:hover {
     cursor: pointer;
   }
