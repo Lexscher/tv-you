@@ -18,18 +18,20 @@ class Tvshow < ApplicationRecord
        user.favorites.find_by(tvshow_id: self.id)
     end
 
-    def self.search(search)
-        if search
-            tvshow = Tvshow.find_by(name: search)
-            if tvshow 
-                self.where(tvshow_id: tvshow)
-            else
-                Tvshow.all
-            end
-        else 
-            Tvshow.all
-        end 
-    end 
+    
+
+    # def self.search(search)
+    #     if search
+    #         tvshow = Tvshow.find_by(name: search)
+    #         if tvshow 
+    #             self.where(tvshow_id: tvshow)
+    #         else
+    #             Tvshow.all
+    #         end
+    #     else 
+    #         Tvshow.all
+    #     end 
+    # end 
     
     # page1 = Tvshow.get_popular_shows(1)
     # page1["results"].count => 20

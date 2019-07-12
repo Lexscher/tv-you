@@ -5,11 +5,22 @@ class TvshowsController < ApplicationController
     def index
         if params[:search_term]
             #@tvshows = Tvshow.where(name: params[:search_term])
-            @tvshows = Tvshow.where("name like ?", "%#{params[:search_term]}%")
+            search = params[:search_term].downcase
+            @tvshows = Tvshow.all.select { |tvshow|
+                tvshow.name.downcase.include?(search)
+            }
         else
             @tvshows = Tvshow.all
         end
         
+        # if params[:search_term]
+        #     #@tvshows = Tvshow.where(name: params[:search_term])
+        #     params[:search_term].downcase
+        #     @tvshows = Tvshow.where("name like ?", "%#{params[:search_term]}%")
+        # else
+        #     @tvshows = Tvshow.all
+        # end
+
         #@tvshows = Tvshow.search(params[:search])
 
     end
