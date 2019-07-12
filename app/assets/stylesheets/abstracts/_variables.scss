@@ -1,0 +1,29 @@
+// COLORS
+$color-primary: #fc5f00;
+$color-primary-light: #ffa725;
+$color-primary-dark: #ff3773;
+
+$color-secondary: #c1c1c2;
+$color-secondary-light: #e3e3e4;
+$color-secondary-dark: #8e9092;
+
+$color-grey: #534d43;
+
+$color-white: #fff;
+$color-black: #000;
+
+// FONT
+$default-font-header: 'Roboto', sans-serif;
+$default-font-family: 'Roboto Condensed', sans-serif;
+
+$default-font-size: 1.6rem;
+$default-font-weight: 250;
+
+// SHADOW
+$shadow-primary: 5px 5px 5px $color-primary-dark;
+
+
+// GRID
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;

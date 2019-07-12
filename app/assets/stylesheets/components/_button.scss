@@ -1,0 +1,26 @@
+.btn {
+  background: #3498db;
+  width: 90px;
+  height: 40px;
+  padding: 4px 0;
+
+  p {
+    font-family: 'Roboto';
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    user-select: none;
+  }
+
+  &--green {
+    background: green;
+  }
+
+  &--red {
+    background: red;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

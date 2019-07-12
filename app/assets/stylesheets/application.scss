@@ -1,3 +1,29 @@
+@import 'abstracts/variables';
+@import 'abstracts/animations';
+@import 'abstracts/mixins';
+
+@import 'base/typography';
+@import 'base/utilities';
+
+@import 'components/button';
+@import 'components/form';
+@import 'components/nav';
+
+@import 'layout/header';
+
+@import 'pages/home';
+@import 'pages/one_show';
+
+body {
+  background-color: $color-primary;
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

@@ -3,6 +3,7 @@ class TvshowsController < ApplicationController
     
 
     def index
+        @page = params[:page]
         if params[:search_term]
             #@tvshows = Tvshow.where(name: params[:search_term])
             search = params[:search_term].downcase
@@ -10,19 +11,15 @@ class TvshowsController < ApplicationController
                 tvshow.name.downcase.include?(search)
             }
         else
-            @tvshows = Tvshow.all
+            @page = params[:page]
+            if @page
+                @max = @page.to_i * 21
+                @min = @max - 21
+                @tvshows = Tvshow.where("id >= #{@min} and id <= #{@max}")
+            else
+                @tvshows = Tvshow.where("id <= 21")
+            end
         end
-        
-        # if params[:search_term]
-        #     #@tvshows = Tvshow.where(name: params[:search_term])
-        #     params[:search_term].downcase
-        #     @tvshows = Tvshow.where("name like ?", "%#{params[:search_term]}%")
-        # else
-        #     @tvshows = Tvshow.all
-        # end
-
-        #@tvshows = Tvshow.search(params[:search])
-
     end
 
     def show
