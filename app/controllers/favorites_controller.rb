@@ -2,6 +2,11 @@ class FavoritesController < ApplicationController
     before_action :find_favorite, only: [:show, :destroy]
 
     def index
+        # if params[:search_term]
+        #     @favorites = Favorite.where(name: params[:search_term])
+        # else
+        #     @favorites = Favorite.all
+        # end
         @favorites = Favorite.all
     end
     
@@ -34,9 +39,9 @@ class FavoritesController < ApplicationController
 
     private
 
-    def search_and_destroy_favorite
+    # def search_and_destroy_favorite
 
-    end 
+    # end 
 
     def find_favorite
         current_user

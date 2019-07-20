@@ -4,12 +4,21 @@ class TvshowsController < ApplicationController
 
     def index
         @page = params[:page]
-        if @page
-            @max = @page.to_i * 21
-            @min = @max - 21
-            @tvshows = Tvshow.where("id >= #{@min} and id <= #{@max}")
+        if params[:search_term]
+            #@tvshows = Tvshow.where(name: params[:search_term])
+            search = params[:search_term].downcase
+            @tvshows = Tvshow.all.select { |tvshow|
+                tvshow.name.downcase.include?(search)
+            }
         else
-            @tvshows = Tvshow.where("id <= 21")
+            @page = params[:page]
+            if @page
+                @max = @page.to_i * 21
+                @min = @max - 21
+                @tvshows = Tvshow.where("id >= #{@min} and id <= #{@max}")
+            else
+                @tvshows = Tvshow.where("id <= 21")
+            end
         end
     end
 
@@ -39,6 +48,26 @@ class TvshowsController < ApplicationController
         else
             current_user
         end 
-    end 
+    end
+
+    # def tvshow_params
+    #     params.require(:tvshow).permit(
+    #     :name, 
+    #     :overview,  
+    #     :original_name, 
+    #     :popularity,  
+    #     :first_air_date, 
+    #     :backdrop_path, 
+    #     :poster_path
+    #     )
+    # end 
+    
+    # name:, 
+    # overview:,  
+    # original_name:, 
+    # popularity:,  
+    # first_air_date:, 
+    # backdrop_path:, 
+    # poster_path:
 
 end
